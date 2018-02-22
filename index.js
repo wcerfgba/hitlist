@@ -10,6 +10,7 @@ const main = () => {
     renderFiles,
     sortFilesByName,
     concatFiles,
+    layoutHtml,
     writeIndex
   ], console.log);
 };
@@ -76,6 +77,18 @@ const concatFiles = (files, cb) => async.reduce(
   (memo, file, cb) => cb(null, memo + file.data),
   cb
 );
+
+const layoutHtml = (html, cb) => cb(null, `
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+${html}
+</body>
+</html>
+`);
 
 const writeIndex = (data, cb) => fs.writeFile(
   'index.html',
