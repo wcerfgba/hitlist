@@ -12,7 +12,7 @@ const main = () => {
 };
 
 const loadFiles = (cb) => glob(
-  '*.md',
+  '*.jf',
   (err, filenames) => async.map(
     filenames,
     loadFile,
